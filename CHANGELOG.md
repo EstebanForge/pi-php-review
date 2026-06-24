@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 — 2026-06-24
+
+### Fixed
+- **Directory pathspec leaked non-PHP files**: when `path` was a directory,
+  the tool passed a bare pathspec that git prefix-matched every file under it
+  (`.ts`, `.json`, etc.), feeding non-PHP diffs into a PHP review. Directory
+  paths now use `:(glob)dir/**/*.php`, which filters to PHP AND recurses.
+
 ## 1.0.0 — 2026-06-23
 
 Initial release. A Pi-native PHP code review tool, sibling to

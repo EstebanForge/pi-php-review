@@ -108,14 +108,15 @@ export default function (pi: ExtensionAPI) {
 			}
 
 			// Narrow to the caller's file/dir, else default to all .php files.
-			// For directories: pass the bare path so git prefix-matches; the prior
-			// `dir/**/*.php` form silently matched nothing in git (slash before `**`
-			// blocks the recursion). For files: literal match.
+			// For directories: `:(glob)dir/**/*.php` filters to PHP AND recurses
+			// (a bare dir leaks non-PHP files; plain `dir/**/*.php` matches nothing
+			// without the :(glob) magic, since the slash before `**` blocks it).
+			// For files: literal match.
 			const pathspec = !filePath
 				? GLOB
 				: filePath.endsWith(EXT)
 					? filePath
-					: filePath.replace(/\/+$/, "");
+					: `:(glob)${filePath.replace(/\/+$/, "")}/**/*${EXT}`;
 			const gitArgs = [...GIT_PREFIX[mode], ...(ref ? [ref] : []), "--", pathspec];
 
 			const result = await pi.exec("git", gitArgs, { signal, timeout: 30000 });
