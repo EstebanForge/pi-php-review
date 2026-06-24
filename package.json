@@ -1,0 +1,62 @@
+{
+  "name": "@estebanforge/pi-php-review",
+  "version": "1.0.0",
+  "description": "PHP code-review tool for Pi. Grades your git diffs against a focused PHP 8.2+ rubric (4 sections, 16 entries: strict-types/typing, error handling, builtin correctness, security). Each entry has a bad/good pair; the LLM proposes a corrected snippet. Returns categorized findings (Bug / Suggestion / Nit / Good pattern) with an Approve or Request-Changes verdict. Not a linter; pairs with phpstan analyse and php-cs-fixer.",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "php",
+    "php82",
+    "code-review",
+    "code-reviewer",
+    "anti-patterns",
+    "code-smells",
+    "rubric",
+    "checklist",
+    "security",
+    "git-diff",
+    "phpstan"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "EstebanForge",
+    "email": "esteban@attitude.cl",
+    "url": "https://actitud.xyz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstebanForge/pi-php-review.git"
+  },
+  "type": "module",
+  "files": [
+    "extensions",
+    "README.md"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ]
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-ai": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    },
+    "typebox": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "@types/node": "^22.0.0",
+    "typebox": "*",
+    "typescript": "^5.8.0"
+  }
+}
