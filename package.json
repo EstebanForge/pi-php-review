@@ -1,6 +1,6 @@
 {
   "name": "@estebanforge/pi-php-review",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "PHP code-review tool for Pi. Grades your git diffs against a focused PHP 8.2+ rubric (4 sections, 16 entries: strict-types/typing, error handling, builtin correctness, security). Each entry has a bad/good pair; the LLM proposes a corrected snippet. Returns categorized findings (Bug / Suggestion / Nit / Good pattern) with an Approve or Request-Changes verdict. Not a linter; pairs with phpstan analyse and php-cs-fixer.",
   "keywords": [
     "pi-package",
